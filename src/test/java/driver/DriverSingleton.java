@@ -24,9 +24,9 @@ public class DriverSingleton {
                 }
                 case "edge": {
                     WebDriverManager.edgedriver().setup();
-//                    EdgeOptions options = new EdgeOptions();
-//                    options.addArguments("headless");
-                    driver = new EdgeDriver(/*options*/);
+                    EdgeOptions options = new EdgeOptions();
+                    options.addArguments("headless");
+                    driver = new EdgeDriver(options);
                     break;
                 }
                 case "htmlunit": {
@@ -35,9 +35,9 @@ public class DriverSingleton {
                 }
                 default: {
                     WebDriverManager.chromedriver().setup();
-//                    ChromeOptions options = new ChromeOptions();
-//                    options.addArguments("headless");
-                    driver = new ChromeDriver(/*options*/);
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("headless");
+                    driver = new ChromeDriver(options);
                     break;
                 }
             }
