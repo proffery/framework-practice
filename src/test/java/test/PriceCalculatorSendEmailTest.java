@@ -1,8 +1,4 @@
 package test;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import page.CleanCalculatorPage;
@@ -10,20 +6,12 @@ import page.CloudHomePage;
 import page.PostPage;
 
 
-public class CalculatorTest {
-    private WebDriver driver;
+public class PriceCalculatorSendEmailTest extends CommonConditions {
     private static final String SEARCH_REQUEST = "Google Cloud Platform Pricing Calculator";
     private static final String INSTANCES = "4";
 
-    @BeforeTest
-    public void browserSetup() {
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-    }
-
     @Test
-    public void price() {
+    public void priceCompare() {
         String calcPageWindow = driver.getWindowHandle();
 
         String postEmail = new CloudHomePage(driver)
@@ -49,11 +37,4 @@ public class CalculatorTest {
 
         Assert.assertTrue(costOnPage.contains(costInMail));
     }
-
-    @AfterTest()
-    public void browserTearDown() {
-        driver.close();
-        driver.quit();
-    }
-
 }
