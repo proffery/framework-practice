@@ -1,28 +1,46 @@
 package driver;
-
-import com.github.mike10004.xvfbmanager.XvfbManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 public class DriverSingleton {
     private static WebDriver driver;
 
     public static WebDriver getDriver() {
-        if (null == driver){
-            switch (System.getProperty("browser")){
+        if (null == driver) {
+            switch (System.getProperty("browser")) {
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+//                    FirefoxOptions options = new FirefoxOptions();
+//                    options.setHeadless(true);
+                    driver = new FirefoxDriver(/*options*/);
+                    break;
                 }
-                case "xvfb": {
-                    WebDriverManager.firefoxdriver().linux().setup();
+                case "edge": {
+                    WebDriverManager.edgedriver().setup();
+//                    EdgeOptions options = new EdgeOptions();
+//                    options.addArguments("headless");
+                    driver = new EdgeDriver(/*options*/);
+                    break;
+                }
+                case "htmlunit": {
+//                    EdgeOptions options = new EdgeOptions();
+//                    options.addArguments("headless");
+                    driver = new HtmlUnitDriver();
+                    break;
                 }
                 default: {
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+//                    ChromeOptions options = new ChromeOptions();
+//                    options.addArguments("headless");
+                    driver = new ChromeDriver(/*options*/);
+                    break;
                 }
             }
             driver.manage().window().maximize();
