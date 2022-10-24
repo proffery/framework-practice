@@ -19,6 +19,8 @@ public class DriverSingleton {
                     WebDriverManager.firefoxdriver().setup();
                     FirefoxOptions options = new FirefoxOptions();
                     options.setHeadless(true);
+                    options.addArguments("--width=1920");
+                    options.addArguments("--height=1080");
                     driver = new FirefoxDriver(options);
                     break;
                 }
