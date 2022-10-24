@@ -29,10 +29,6 @@ public class DriverSingleton {
                     driver = new EdgeDriver(options);
                     break;
                 }
-                case "htmlunit": {
-                    driver = new HtmlUnitDriver();
-                    break;
-                }
                 default: {
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
