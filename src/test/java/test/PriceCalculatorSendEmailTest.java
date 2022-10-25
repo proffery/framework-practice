@@ -12,13 +12,15 @@ public class PriceCalculatorSendEmailTest extends CommonConditions {
 
     @Test
     public void priceCompare() {
-        String calcPageWindow = driver.getWindowHandle();
-
-        String postEmail = new CloudHomePage(driver)
+        new CloudHomePage(driver)
                 .openPage()
                 .searchPricingCalculator(SEARCH_REQUEST)
                 .openCalcPage()
-                .redirectionToActualFrame()
+                .redirectionToActualFrame();
+
+        String calcPageWindow = driver.getWindowHandle();
+
+        String postEmail = new CleanCalculatorPage(driver)
                 .fillCalcForm(INSTANCES)
                 .createPostTab()
                 .goToPostPage()
