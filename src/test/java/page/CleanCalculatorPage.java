@@ -1,4 +1,5 @@
 package page;
+import model.Engine;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
@@ -8,30 +9,20 @@ public class CleanCalculatorPage extends AbstractPage {
     private WebElement computeEngineButton;
 
     @FindBy(xpath = "//md-input-container/input[@class='ng-pristine ng-untouched md-input ng-empty ng-valid-min ng-invalid ng-invalid-required' and @name='quantity']")
-    private WebElement numberOfInstances;
+    private WebElement numberOfInstancesField;
 
     @FindBy(xpath = "//*[contains(@aria-label,'Operating')]/md-select-value/span[@class='md-select-icon']")
     private WebElement softwareOpen;
 
-    @FindBy(xpath = "//md-option/*[contains(text(),'Free: Debian,')]")
-    private WebElement softwareChoose;
-
     @FindBy(xpath = "//md-select[@placeholder='VM Class']/md-select-value/span[@class='md-select-icon']")
-    private WebElement regularOpen;
-    @FindBy(xpath = "//md-option/div[text()='Regular']")
-    private WebElement regularChoose;
+    private WebElement provisioningOpen;
 
     @FindBy(xpath = "//md-select[@name='series']/md-select-value/span[@class='md-select-icon']")
     private WebElement seriesOpen;
 
-    @FindBy(xpath = "//md-option[@value='n1']")
-    private WebElement seriesChoose;
-
     @FindBy(xpath = "//md-select[@placeholder='Instance type']/md-select-value/span[@class='md-select-icon']")
     private WebElement machineTypeOpen;
 
-    @FindBy(xpath = "//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']/div")
-    private WebElement machineTypeChoose;
 
     @FindBy(xpath = "//md-checkbox[@ng-model='listingCtrl.computeServer.addGPUs']/div[@class='md-container md-ink-ripple']")
     private WebElement addGpu;
@@ -39,32 +30,19 @@ public class CleanCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//md-select[starts-with(@aria-label,'GPU type')]")
     private WebElement gpuTypeOpen;
 
-    @FindBy(xpath = "//md-option[@value='NVIDIA_TESLA_P100']/div")
-    private WebElement gpuTypeChoose;
 
     @FindBy(xpath = "//md-select[starts-with(@aria-label,'Number of GPUs')]")
     private WebElement numberOfGpuOpen;
 
-    @FindBy(xpath = "//md-option[@ng-repeat='item in listingCtrl.supportedGpuNumbers[listingCtrl.computeServer.gpuType]' and @value ='1']")
-    private WebElement numberOfGpuChoose;
 
     @FindBy(xpath = "//md-select[starts-with(@aria-label,'Datacenter location')]//span[@class='md-select-icon']")
     private WebElement locationOpen;
 
-    @FindBy(xpath = "//md-select-menu[@class='md-overflow']//md-option[@value='europe-west3']")
-    private WebElement locationChoose;
-
     @FindBy(xpath = "//div[@ng-if=\"listingCtrl.checkLocalSsdAvailibility('computeServer')\"]//md-select[starts-with(@aria-label,'Local SSD')]//span[@class='md-select-icon']")
     private WebElement ssdOpen;
 
-    @FindBy(xpath = "//md-option[@ng-repeat='item in listingCtrl.dynamicSsd.computeServer']/div[contains(text(),'2x375 GB')]")
-    private WebElement ssdChoose;
-
     @FindBy(xpath = "//md-select[starts-with(@aria-label,'Committed usage')]//span[@class='md-select-icon']")
     private WebElement usageOpen;
-
-    @FindBy(xpath = "//div[@class='md-select-menu-container md-active md-clickable']//div[contains(text(),'1 Year')]")
-    private WebElement usageChoose;
 
     @FindBy(xpath = "//button[starts-with(@ng-disabled,'ComputeEngineForm.$invalid')]")
     private WebElement addButton;
@@ -91,28 +69,28 @@ public class CleanCalculatorPage extends AbstractPage {
         throw new RuntimeException();
     }
 
-    public CleanCalculatorPage fillCalcForm(String instances) {
+    public CleanCalculatorPage fillEngineFormWithGpu(Engine engine) {
         computeEngineButton.click();
-        numberOfInstances.sendKeys(instances);
+        numberOfInstancesField.sendKeys(engine.getInstances());
         softwareOpen.click();
-        softwareChoose.click();
-        regularOpen.click();
-        regularChoose.click();
+        engine.getSoftware().click();
+        provisioningOpen.click();
+        engine.getProvisioning().click();
         seriesOpen.click();
-        seriesChoose.click();
+        engine.getSeries().click();
         machineTypeOpen.click();
-        machineTypeChoose.click();
+        engine.getMachine().click();
         locationOpen.click();
-        locationChoose.click();
+        engine.getLocation().click();
         addGpu.click();
         gpuTypeOpen.click();
-        gpuTypeChoose.click();
+        engine.getGpuType().click();
         numberOfGpuOpen.click();
-        numberOfGpuChoose.click();
+        engine.getNumberOfGpu().click();
         ssdOpen.click();
-        ssdChoose.click();
+        engine.getSsd().click();
         usageOpen.click();
-        usageChoose.click();
+        engine.getUsage().click();
         addButton.click();
         return this;
     }
@@ -127,7 +105,7 @@ public class CleanCalculatorPage extends AbstractPage {
         driver.switchTo().window(windowHandle);
         return new PostPage(driver);
     }
-    public PostPage createPostTab() {
+    public PostPage createNewTab() {
         driver.switchTo().newWindow(WindowType.TAB);
         return new PostPage(driver);
     }

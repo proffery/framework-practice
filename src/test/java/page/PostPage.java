@@ -58,7 +58,7 @@ public class PostPage extends AbstractPage{
                 .until(ExpectedConditions.visibilityOf(costFromMail)).getText();
     }
 
-    public String getEmail() {
+    public String getRandomEmail() {
         randomEmail.click();
         return getEmail.getText();
     }

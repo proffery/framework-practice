@@ -1,30 +1,30 @@
 package test;
+import model.Engine;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import page.CleanCalculatorPage;
 import page.CloudHomePage;
 import page.PostPage;
+import sevice.EngineCreator;
 
 
 public class PriceCalculatorSendEmailTest extends CommonConditions {
-    private static final String SEARCH_REQUEST = "Google Cloud Platform Pricing Calculator";
-    private static final String INSTANCES = "4";
 
     @Test
     public void priceCompare() {
         new CloudHomePage(driver)
                 .openPage()
-                .searchPricingCalculator(SEARCH_REQUEST)
+                .searchPricingCalculator()
                 .openCalcPage()
-                .redirectionToActualFrame();
+                .redirectionToActualPage();
 
         String calcPageWindow = driver.getWindowHandle();
-
+        Engine engineFromHardcore = new EngineCreator(driver).withCredentialsFromHardcore();
         String postEmail = new CleanCalculatorPage(driver)
-                .fillCalcForm(INSTANCES)
-                .createPostTab()
+                .fillEngineFormWithGpu(engineFromHardcore)
+                .createNewTab()
                 .goToPostPage()
-                .getEmail();
+                .getRandomEmail();
 
         String postPageWindow = driver.getWindowHandle();
 

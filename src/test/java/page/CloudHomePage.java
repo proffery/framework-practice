@@ -7,6 +7,7 @@ import java.time.Duration;
 
 public class CloudHomePage extends AbstractPage {
     private static final String HOMEPAGE_URL = "https://cloud.google.com/";
+    private static final String SEARCH_REQUEST = "Google Cloud Platform Pricing Calculator";
 
     @FindBy(xpath = "//input[@name='q']")
     private WebElement searchArea;
@@ -20,13 +21,13 @@ public class CloudHomePage extends AbstractPage {
         return this;
     }
 
-    public SearchResultsPage searchPricingCalculator(String searchRequest) {
+    public SearchResultsPage searchPricingCalculator() {
          new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .pollingEvery(Duration.ofSeconds(POLLING_TIMEOUT_SECONDS))
                 .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.visibilityOf(searchArea))
-                .sendKeys(searchRequest, Keys.ENTER);
+                .sendKeys(SEARCH_REQUEST, Keys.ENTER);
         return new SearchResultsPage(driver);
     }
 }

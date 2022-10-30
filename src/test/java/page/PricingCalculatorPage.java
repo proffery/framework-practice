@@ -25,7 +25,7 @@ public class PricingCalculatorPage extends AbstractPage {
         throw new RuntimeException();
     }
 
-    public CleanCalculatorPage redirectionToActualFrame() {
+    public CleanCalculatorPage redirectionToActualPage() {
         new WebDriverWait(driver, Duration.ofSeconds( WAIT_TIMEOUT_SECONDS));
         driver.navigate().to(actualLincFrame(FRAME_PATTERN_ONE));
         new WebDriverWait(driver, Duration.ofSeconds( WAIT_TIMEOUT_SECONDS));
