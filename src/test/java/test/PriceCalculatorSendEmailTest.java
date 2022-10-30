@@ -2,7 +2,7 @@ package test;
 import model.Engine;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import page.CleanCalculatorPage;
+import page.CalculatorPage;
 import page.CloudHomePage;
 import page.PostPage;
 import sevice.EngineCreator;
@@ -12,15 +12,17 @@ public class PriceCalculatorSendEmailTest extends CommonConditions {
 
     @Test
     public void priceCompare() {
+
         new CloudHomePage(driver)
                 .openPage()
                 .searchPricingCalculator()
-                .openCalcPage()
-                .redirectionToActualPage();
+                .openCalcPage();
 
         String calcPageWindow = driver.getWindowHandle();
+
         Engine engineFromHardcore = new EngineCreator(driver).withCredentialsFromHardcore();
-        String postEmail = new CleanCalculatorPage(driver)
+
+        String postEmail = new CalculatorPage(driver)
                 .fillEngineFormWithGpu(engineFromHardcore)
                 .createNewTab()
                 .goToPostPage()
@@ -33,7 +35,7 @@ public class PriceCalculatorSendEmailTest extends CommonConditions {
                 .sendEmail(postEmail)
                 .getPrice();
 
-        String costInMail = new CleanCalculatorPage(driver)
+        String costInMail = new CalculatorPage(driver)
                 .switchToTab(postPageWindow)
                 .getPriceFromEmail();
 

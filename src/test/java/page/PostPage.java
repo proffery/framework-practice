@@ -63,8 +63,8 @@ public class PostPage extends AbstractPage{
         return getEmail.getText();
     }
 
-    public CleanCalculatorPage switchToTab(String windowHandle) {
+    public CalculatorPage switchToTab(String windowHandle) {
         driver.switchTo().window(windowHandle);
-        return new CleanCalculatorPage(driver);
+        return new CalculatorPage(driver);
     }
 }

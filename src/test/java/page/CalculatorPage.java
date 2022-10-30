@@ -2,8 +2,11 @@ package page;
 import model.Engine;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CleanCalculatorPage extends AbstractPage {
+import java.time.Duration;
+
+public class CalculatorPage extends AbstractPage {
 
     @FindBy(xpath = "//md-tab-item/div[@class='tab-holder compute' and @title='Compute Engine']")
     private WebElement computeEngineButton;
@@ -59,17 +62,16 @@ public class CleanCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//button[contains(text(),'Send Email')]")
     private WebElement sendEmailButton;
 
-    public CleanCalculatorPage(WebDriver driver) {
+    public CalculatorPage(WebDriver driver) {
         super(driver);
 
     }
-
     @Override
     protected AbstractPage openPage() {
         throw new RuntimeException();
     }
 
-    public CleanCalculatorPage fillEngineFormWithGpu(Engine engine) {
+    public CalculatorPage fillEngineFormWithGpu(Engine engine) {
         computeEngineButton.click();
         numberOfInstancesField.sendKeys(engine.getInstances());
         softwareOpen.click();
@@ -94,7 +96,9 @@ public class CleanCalculatorPage extends AbstractPage {
         addButton.click();
         return this;
     }
-    public CleanCalculatorPage sendEmail(String email) {
+
+
+    public CalculatorPage sendEmail(String email) {
         emailButton.click();
         emailField.sendKeys(email);
         sendEmailButton.click();

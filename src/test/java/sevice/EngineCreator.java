@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class EngineCreator {
-    private WebDriver driver;
+    private final WebDriver driver;
     private static final String INSTANCES_FROM_HARDCORE = "4";
 
     @FindBy(xpath = "//md-option/*[contains(text(),'Free: Debian,')]")
@@ -20,7 +20,6 @@ public class EngineCreator {
 
     @FindBy(xpath = "//md-option[@value='n1']")
     private WebElement n1Series;
-
 
     @FindBy(xpath = "//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']/div")
     private WebElement n1Standard8Machine;
@@ -54,4 +53,7 @@ public class EngineCreator {
                 usageIsOneYear);
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
 }
