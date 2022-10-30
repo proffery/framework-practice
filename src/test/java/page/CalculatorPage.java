@@ -2,9 +2,6 @@ package page;
 import model.Engine;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class CalculatorPage extends AbstractPage {
 
@@ -89,6 +86,27 @@ public class CalculatorPage extends AbstractPage {
         engine.getGpuType().click();
         numberOfGpuOpen.click();
         engine.getNumberOfGpu().click();
+        ssdOpen.click();
+        engine.getSsd().click();
+        usageOpen.click();
+        engine.getUsage().click();
+        addButton.click();
+        return this;
+    }
+
+    public CalculatorPage fillEngineFormWithoutGpu(Engine engine) {
+        computeEngineButton.click();
+        numberOfInstancesField.sendKeys(engine.getInstances());
+        softwareOpen.click();
+        engine.getSoftware().click();
+        provisioningOpen.click();
+        engine.getProvisioning().click();
+        seriesOpen.click();
+        engine.getSeries().click();
+        machineTypeOpen.click();
+        engine.getMachine().click();
+        locationOpen.click();
+        engine.getLocation().click();
         ssdOpen.click();
         engine.getSsd().click();
         usageOpen.click();

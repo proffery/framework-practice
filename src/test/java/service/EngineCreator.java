@@ -1,4 +1,4 @@
-package sevice;
+package service;
 
 import model.Engine;
 import org.openqa.selenium.WebDriver;

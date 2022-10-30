@@ -5,13 +5,13 @@ import org.testng.annotations.*;
 import page.CalculatorPage;
 import page.CloudHomePage;
 import page.PostPage;
-import sevice.EngineCreator;
+import service.EngineCreator;
 
 
-public class PriceCalculatorSendEmailTest extends CommonConditions {
+public class PriceCompareWithoutGpuTest extends CommonConditions {
 
     @Test
-    public void priceCompare() {
+    public void priceCompareWithoutGpu() {
 
         new CloudHomePage(driver)
                 .openPage()
@@ -23,7 +23,7 @@ public class PriceCalculatorSendEmailTest extends CommonConditions {
         Engine engineFromHardcore = new EngineCreator(driver).withCredentialsFromHardcore();
 
         String postEmail = new CalculatorPage(driver)
-                .fillEngineFormWithGpu(engineFromHardcore)
+                .fillEngineFormWithoutGpu(engineFromHardcore)
                 .createNewTab()
                 .goToPostPage()
                 .getRandomEmail();
