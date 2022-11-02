@@ -1,9 +1,9 @@
 package driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -30,13 +30,14 @@ public class DriverSingleton {
                 }
                 default: {
                     WebDriverManager.chromedriver().setup();
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("headless");
-                    driver = new ChromeDriver(options);
+//                    ChromeOptions options = new ChromeOptions();
+//                    options.addArguments("headless");
+                    driver = new ChromeDriver(/*options*/);
                     break;
                 }
             }
-            driver.manage().window().maximize();
+
+            driver.manage().window().setSize(new Dimension(1920, 1080));
         }
         return driver;
     }
