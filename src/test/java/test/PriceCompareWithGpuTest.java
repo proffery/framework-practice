@@ -20,10 +20,10 @@ public class PriceCompareWithGpuTest extends CommonConditions {
 
         String calcPageWindow = driver.getWindowHandle();
 
-        Engine engineFromHardcore = new EngineCreator(driver).withCredentialsFromHardcore();
+        Engine engine = new EngineCreator(driver).fromProperties();
 
         String postEmail = new CalculatorPage(driver)
-                .fillEngineFormWithGpu(engineFromHardcore)
+                .fillEngineFormWithGpu(engine)
                 .createNewTab()
                 .goToPostPage()
                 .getRandomEmail();

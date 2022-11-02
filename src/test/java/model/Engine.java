@@ -7,18 +7,18 @@ import java.util.Objects;
 public class Engine {
 
     private final String instances;
-    private final WebElement software;
-    private final WebElement provisioning;
-    private final WebElement series;
-    private final WebElement machine;
-    private final WebElement location;
-    private final WebElement gpuType;
-    private final WebElement numberOfGpu;
-    private final WebElement ssd;
-    private final WebElement usage;
+    private final String software;
+    private final String provisioning;
+    private final String series;
+    private final String machine;
+    private final String location;
+    private final String gpuType;
+    private final String numberOfGpu;
+    private final String ssd;
+    private final String usage;
 
-    public Engine(String instances, WebElement software, WebElement provisioning, WebElement series, WebElement machine,
-                  WebElement location, WebElement gpuType, WebElement numberOfGpu, WebElement ssd, WebElement usage) {
+    public Engine(String instances, String software, String provisioning, String series, String machine,
+                  String location, String gpuType, String numberOfGpu, String ssd, String usage) {
         this.instances = instances;
         this.software = software;
         this.provisioning = provisioning;
@@ -35,39 +35,39 @@ public class Engine {
         return instances;
     }
 
-    public WebElement getSoftware() {
+    public String getSoftware() {
         return software;
     }
 
-    public WebElement getProvisioning() {
+    public String getProvisioning() {
         return provisioning;
     }
 
-    public WebElement getSeries() {
+    public String getSeries() {
         return series;
     }
 
-    public WebElement getMachine() {
+    public String getMachine() {
         return machine;
     }
 
-    public WebElement getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public WebElement getGpuType() {
+    public String getGpuType() {
         return gpuType;
     }
 
-    public WebElement getNumberOfGpu() {
+    public String getNumberOfGpu() {
         return numberOfGpu;
     }
 
-    public WebElement getSsd() {
+    public String getSsd() {
         return ssd;
     }
 
-    public WebElement getUsage() {
+    public String getUsage() {
         return usage;
     }
 
@@ -75,14 +75,14 @@ public class Engine {
     public String toString() {
         return "Engine{" +
                 "instances='" + instances + '\'' +
-                "software='" + software.getText() + '\'' +
-                "provisioning='" + provisioning.getText() + '\'' +
-                "series='" + series.getText() + '\'' +
-                "gpuType='" + gpuType.getText() + '\'' +
-                "numberOfGpu='" + numberOfGpu.getText() + '\'' +
-                "location='" + location.getText() + '\'' +
-                "ssd='" + ssd.getText() + '\'' +
-                "usage='" + usage.getText() + '\'' +
+                "software='" + software + '\'' +
+                "provisioning='" + provisioning + '\'' +
+                "series='" + series + '\'' +
+                "gpuType='" + gpuType + '\'' +
+                "numberOfGpu='" + numberOfGpu + '\'' +
+                "location='" + location + '\'' +
+                "ssd='" + ssd + '\'' +
+                "usage='" + usage + '\'' +
                 '}';
     }
 

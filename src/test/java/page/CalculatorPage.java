@@ -2,6 +2,10 @@ package page;
 import model.Engine;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CalculatorPage extends AbstractPage {
 
@@ -22,7 +26,6 @@ public class CalculatorPage extends AbstractPage {
 
     @FindBy(xpath = "//md-select[@placeholder='Instance type']/md-select-value/span[@class='md-select-icon']")
     private WebElement machineTypeOpen;
-
 
     @FindBy(xpath = "//md-checkbox[@ng-model='listingCtrl.computeServer.addGPUs']/div[@class='md-container md-ink-ripple']")
     private WebElement addGpu;
@@ -59,9 +62,9 @@ public class CalculatorPage extends AbstractPage {
     @FindBy(xpath = "//button[contains(text(),'Send Email')]")
     private WebElement sendEmailButton;
 
+
     public CalculatorPage(WebDriver driver) {
         super(driver);
-
     }
     @Override
     protected AbstractPage openPage() {
@@ -72,24 +75,42 @@ public class CalculatorPage extends AbstractPage {
         computeEngineButton.click();
         numberOfInstancesField.sendKeys(engine.getInstances());
         softwareOpen.click();
-        engine.getSoftware().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getSoftware())))).click();
         provisioningOpen.click();
-        engine.getProvisioning().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getProvisioning())))).click();
         seriesOpen.click();
-        engine.getSeries().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getSeries())))).click();
         machineTypeOpen.click();
-        engine.getMachine().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getMachine())))).click();
         locationOpen.click();
-        engine.getLocation().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getLocation())))).click();
         addGpu.click();
         gpuTypeOpen.click();
-        engine.getGpuType().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getGpuType())))).click();
         numberOfGpuOpen.click();
-        engine.getNumberOfGpu().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getNumberOfGpu())))).click();
         ssdOpen.click();
-        engine.getSsd().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getSsd())))).click();
         usageOpen.click();
-        engine.getUsage().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getUsage())))).click();
         addButton.click();
         return this;
     }
@@ -98,23 +119,36 @@ public class CalculatorPage extends AbstractPage {
         computeEngineButton.click();
         numberOfInstancesField.sendKeys(engine.getInstances());
         softwareOpen.click();
-        engine.getSoftware().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getSoftware())))).click();
         provisioningOpen.click();
-        engine.getProvisioning().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getProvisioning())))).click();
         seriesOpen.click();
-        engine.getSeries().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getSeries())))).click();
         machineTypeOpen.click();
-        engine.getMachine().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getMachine())))).click();
         locationOpen.click();
-        engine.getLocation().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getLocation())))).click();
         ssdOpen.click();
-        engine.getSsd().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getSsd())))).click();
         usageOpen.click();
-        engine.getUsage().click();
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions
+                        .visibilityOf(driver.findElement(By.xpath(engine.getUsage())))).click();
         addButton.click();
         return this;
     }
-
 
     public CalculatorPage sendEmail(String email) {
         emailButton.click();

@@ -20,10 +20,10 @@ public class PriceCompareWithoutGpuTest extends CommonConditions {
 
         String calcPageWindow = driver.getWindowHandle();
 
-        Engine engineFromHardcore = new EngineCreator(driver).withCredentialsFromHardcore();
+        Engine engine = new EngineCreator(driver).fromProperties();
 
         String postEmail = new CalculatorPage(driver)
-                .fillEngineFormWithoutGpu(engineFromHardcore)
+                .fillEngineFormWithoutGpu(engine)
                 .createNewTab()
                 .goToPostPage()
                 .getRandomEmail();
