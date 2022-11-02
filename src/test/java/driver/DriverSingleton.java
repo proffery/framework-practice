@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverSingleton {
     private static WebDriver driver;
@@ -15,9 +16,9 @@ public class DriverSingleton {
             switch (System.getProperty("browser")) {
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
-//                    FirefoxOptions options = new FirefoxOptions();
-//                    options.setHeadless(true);
-                    driver = new FirefoxDriver(/*options*/);
+                    FirefoxOptions options = new FirefoxOptions();
+                    options.setHeadless(true);
+                    driver = new FirefoxDriver(options);
                     break;
                 }
                 case "edge": {
