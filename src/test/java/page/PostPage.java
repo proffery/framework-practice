@@ -50,21 +50,26 @@ public class PostPage extends AbstractPage{
                 driver.switchTo().defaultContent();
                 break;
             }
+            logger.info("Waiting email");
         }
-        return new FluentWait<>(driver.switchTo().frame(POST_FRAME))
+        String price = new FluentWait<>(driver.switchTo().frame(POST_FRAME))
                 .withTimeout(Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .pollingEvery(Duration.ofSeconds(POLLING_TIMEOUT_SECONDS))
                 .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.visibilityOf(costFromMail)).getText();
+        logger.info("Getting price from email:" + price);
+        return price;
     }
 
     public String getRandomEmail() {
         randomEmail.click();
+        logger.info("Getting email:" + getEmail.getText());
         return getEmail.getText();
     }
 
     public CalculatorPage switchToTab(String windowHandle) {
         driver.switchTo().window(windowHandle);
+        logger.info("Switching to tab");
         return new CalculatorPage(driver);
     }
 }

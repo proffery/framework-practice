@@ -36,13 +36,12 @@ public class SearchResultsPage extends AbstractPage {
                 .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.visibilityOf(calcInResults))
                 .click();
-
+        logger.info("Open calculator page");
         new WebDriverWait(driver, Duration.ofSeconds( WAIT_TIMEOUT_SECONDS));
         driver.navigate().to(StringUtil.actualLincFrame(driver,FRAME_PATTERN_ONE,IFRAME_LINKS,LINC_ATTRIBUTE));
-
         new WebDriverWait(driver, Duration.ofSeconds( WAIT_TIMEOUT_SECONDS));
         driver.navigate().to(StringUtil.actualLincFrame(driver,FRAME_PATTERN_TWO,IFRAME_LINKS,LINC_ATTRIBUTE));
-
+        logger.info("Redirection to real calculator page");
         return new CalculatorPage(driver);
     }
 

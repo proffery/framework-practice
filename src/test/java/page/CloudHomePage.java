@@ -1,8 +1,13 @@
 package page;
-import org.openqa.selenium.*;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+
 import java.time.Duration;
 
 public class CloudHomePage extends AbstractPage {
@@ -28,6 +33,7 @@ public class CloudHomePage extends AbstractPage {
                 .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.visibilityOf(searchArea))
                 .sendKeys(SEARCH_REQUEST, Keys.ENTER);
+        logger.info("Searching by phrase:" + SEARCH_REQUEST);
         return new SearchResultsPage(driver);
     }
 }

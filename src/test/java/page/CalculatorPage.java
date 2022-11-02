@@ -112,6 +112,7 @@ public class CalculatorPage extends AbstractPage {
                 .until(ExpectedConditions
                         .visibilityOf(driver.findElement(By.xpath(engine.getUsage())))).click();
         addButton.click();
+        logger.info("Filling calc form");
         return this;
     }
 
@@ -147,6 +148,7 @@ public class CalculatorPage extends AbstractPage {
                 .until(ExpectedConditions
                         .visibilityOf(driver.findElement(By.xpath(engine.getUsage())))).click();
         addButton.click();
+        logger.info("Filling calc form");
         return this;
     }
 
@@ -154,18 +156,23 @@ public class CalculatorPage extends AbstractPage {
         emailButton.click();
         emailField.sendKeys(email);
         sendEmailButton.click();
+        logger.info("Sending email");
         return this;
     }
 
     public PostPage switchToTab(String windowHandle) {
         driver.switchTo().window(windowHandle);
+        logger.info("Switching to tab");
         return new PostPage(driver);
     }
     public PostPage createNewTab() {
         driver.switchTo().newWindow(WindowType.TAB);
+        logger.info("Creating new tab");
         return new PostPage(driver);
     }
     public String getPrice() {
-        return priceResult.getText();
+        String price = priceResult.getText();
+        logger.info("Getting price from calculator page:" + price);
+        return price;
     }
 }
