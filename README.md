@@ -1,0 +1,1 @@
+Run command:mvn -Dbrowser=firefox -Denvironment=ga -DsuiteXml=allTests clean test
