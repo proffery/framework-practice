@@ -16,9 +16,9 @@ public class DriverSingleton {
             switch (System.getProperty("browser")) {
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
-                    FirefoxOptions options = new FirefoxOptions();
-                    options.setHeadless(true);
-                    driver = new FirefoxDriver(options);
+//                    FirefoxOptions options = new FirefoxOptions();
+//                    options.setHeadless(true);
+                    driver = new FirefoxDriver(/*options*/);
                     break;
                 }
                 case "edge": {
@@ -30,9 +30,9 @@ public class DriverSingleton {
                 }
                 default: {
                     WebDriverManager.chromedriver().setup();
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("headless");
-                    driver = new ChromeDriver(options);
+//                    ChromeOptions options = new ChromeOptions();
+//                    options.addArguments("headless");
+                    driver = new ChromeDriver(/*options*/);
                     break;
                 }
             }
