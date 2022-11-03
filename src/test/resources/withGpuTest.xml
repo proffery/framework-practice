@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="smokeTest" verbose="1" >
+    <test name="smokeTest">
+        <classes>
+            <class name="test.PriceCompareWithGpuTest">
+            </class>
+        </classes>
+    </test>
+</suite>
